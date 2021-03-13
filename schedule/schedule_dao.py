@@ -21,13 +21,14 @@ class ScheduleDao:
                 schedules
             WHERE
                 user_id = %(user_id)s
+            ORDER BY start_time
+            ;
             """
 
             db_cursor.execute(get_stmt, {'user_id': user_id})
             data_list = db_cursor.fetchall()
-            print(data_list)
             if data_list:
-                return jsonify(data_list), 200
+                return data_list
             return jsonify({'message': 'SCHEDULE_DOES_NOT_EXIST'}), 404
 
         # except Exception as e:
