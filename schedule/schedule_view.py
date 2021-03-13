@@ -15,13 +15,9 @@ class ScheduleView:
         """
 
         try:
-            print(0)
             db_connection = get_db_connection()
-            print(db_connection)
-            print(11)
             if db_connection:
                 schedule_service = ScheduleService()
-                print(1)
                 data_list = schedule_service.get_today_schedule_data_list(user_id, db_connection)
                 return data_list
 

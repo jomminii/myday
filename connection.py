@@ -12,20 +12,19 @@ def get_db_connection():
     History:
         2021-03-13 (leejm): 초기 생성
     """
-    print('$'*100, DATABASES)
     _db_config = {
-        'host': DATABASES['database'],
+        'host': DATABASES['host'],
         'port': DATABASES['port'],
         'user': DATABASES['user'],
         'password': DATABASES['password'],
-        'database': DATABASES['database'],
+        'database': 'MYDAY_DB',
         'charset': DATABASES['charset'],
         'cursorclass': pymysql.cursors.DictCursor,
     }
-    print('config', _db_config)
+
     # try:
     db = pymysql.connect(**_db_config)
-    print('aaaaa' , db)
+#    db = pymysql.connect( host='myday-database.cp4cgr7ypiij.ap-northeast-2.rds.amazonaws.com', port=3306, user='admin', password='akdlepdl13!#', database='MYDAY_DB')
     return db
 
     # except Exception as e:

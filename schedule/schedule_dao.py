@@ -13,20 +13,19 @@ class ScheduleDao:
         """
 
         # try:
-        print(5)
         with db_connection.cursor() as db_cursor:
             get_stmt = """
             SELECT
                 *
             FROM
-                mydayDB.schedules
+                schedules
             WHERE
                 user_id = %(user_id)s
             """
 
             db_cursor.execute(get_stmt, {'user_id': user_id})
-            print(6)
             data_list = db_cursor.fetchall()
+            print(data_list)
             if data_list:
                 return jsonify(data_list), 200
             return jsonify({'message': 'SCHEDULE_DOES_NOT_EXIST'}), 404
